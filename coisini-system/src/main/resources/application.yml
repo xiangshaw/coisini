@@ -1,0 +1,97 @@
+server:
+  port: 9422
+spring:
+  application:
+    name: system
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.20.128:3306/coisini_system?serverTimezone=Asia/Shanghai&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+  cloud:
+    nacos:
+      discovery:
+        # 开启nacos作为服务注册中心，默认值：true
+        enabled: true
+        # nacos集群服务注册地址
+        server-addr: 192.168.20.128:8999
+        # nacos用户名
+        username: nacos
+        # nacos密码
+        password: nacos
+        # 命名空间，默认 public,可设置dev,pro等，相同特征的服务分类，先去nacos命名空间创建
+        # namespace: public
+        # 分组，默认 DEFAULT_GROUP 相同特征的服务划分的更细
+        group: DEFAULT_GROUP
+        # 临时实例，默认true，false永久实例，即使宕机也不会从nacos服务中删除,可应对雪崩保护，避免服务被删除
+        ephemeral: true
+        # 权重 1-100 数值越大权重越大分配的流量就越大，通常结合权重负载均衡策略
+        weight: 100
+  redis:
+    host: 192.168.20.128
+    port: 6379
+    password: 123456
+    database: 0
+    timeout: 5000000
+    jedis:
+      pool:
+        # 最大连接数
+        max-active: 20
+        # 最大阻塞等待时间(负数表示没限制)
+        max-wait: -1
+        # 最大空闲
+        max-idle: 10
+        # 最小空闲
+        min-idle: 1
+        time-between-eviction-runs: 10s
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  configuration:
+    # 查看日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 下划线命名转驼峰命名
+    map-underscore-to-camel-case: true
+  type-aliases-package: cn.coisini.model.system.pojo
+# seata配置
+seata:
+  enabled: true
+  # seata应用名
+  application-id: ${spring.application.name}
+  # 事务分组名
+  tx-service-group: ${spring.application.name}-group
+  data-source-proxy-mode: AT
+  # 开启自动代理
+  enable-auto-data-source-proxy: true
+  use-jdk-proxy: true
+  # 服务配置项
+  service:
+    # 虚拟组和分组的映射
+    vgroup-mapping:
+      system-group: default
+  # 从NacosConfig获取配置
+  #  config:
+  #    type: nacos
+  #    nacos:
+  #      server-addr: ${spring.cloud.nacos.discovery.server-addr}
+  #      group: SEATA_GROUP
+  #      namespace:
+  #      username: nacos
+  #      password: nacos
+  # 服务注册到nacos
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: ${spring.cloud.nacos.discovery.server-addr}
+      #namespace:
+      username: nacos
+      password: nacos
+      group: SEATA_GROUP
+      cluster: default

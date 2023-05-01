@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.coisini</groupId>
+        <artifactId>coisini</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>coisini-common</artifactId>
+    <packaging>pom</packaging>
+    <name>coisini-common</name>
+
+    <modules>
+        <!--公共类下的-->
+        <!--核心工具类-->
+        <module>common-util</module>
+        <!--模块工具类-->
+        <module>service-util</module>
+        <!--系统操作日志模块-->
+        <module>common-log</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+</project>

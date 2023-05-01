@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.coisini</groupId>
+        <artifactId>coisini</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>coisini-admin</artifactId>
+    <packaging>jar</packaging>
+    <name>admin</name>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!--依赖模块-->
+        <!--实体类-->
+        <dependency>
+            <groupId>cn.coisini</groupId>
+            <artifactId>coisini-model</artifactId>
+        </dependency>
+        <!--技术解决-->
+        <dependency>
+            <groupId>cn.coisini</groupId>
+            <artifactId>service-util</artifactId>
+        </dependency>
+    </dependencies>
+</project>

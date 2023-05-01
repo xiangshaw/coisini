@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--Springboot版本管理器,放dependencyManagement中去了，方便以后使用parent继承自定义的maven项目-->
+    <!--<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.13</version>
+        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;
+    </parent>-->
+    <groupId>cn.coisini</groupId>
+    <artifactId>coisini</artifactId>
+    <version>${coisini.cn.version}</version>
+    <name>coisini</name>
+    <description>Spring Cloud Coisini</description>
+    <packaging>pom</packaging>
+
+    <modules>
+        <!--admin管理端-->
+        <module>coisini-admin</module>
+        <!--user用户端-->
+        <module>coisini-user</module>
+        <!--公共实体类-->
+        <module>coisini-model</module>
+        <!--公共配置-技术解决方案-->
+        <module>coisini-common</module>
+        <!--admin网关-->
+        <module>coisini-admin-gateway</module>
+        <!--权限管理-->
+        <module>coisini-system</module>
+
+    </modules>
+
+    <properties>
+        <!--项目版本号-->
+        <coisini.cn.version>0.0.1-SNAPSHOT</coisini.cn.version>
+        <java.version>1.8</java.version>
+        <!--版本号管理-->
+        <!--SpringCloud对应版本 https://github.com/alibaba/spring-cloud-alibaba/wiki/%E7%89%88%E6%9C%AC%E8%AF%B4%E6%98%8E-->
+        <!--Spring Cloud Alibaba Version 2021.0.5.0
+        Sentinel Version 1.8.6
+        Nacos Version 2.2.0
+        RocketMQ Version 4.9.4
+        Dubbo Version 2.7.13
+        Seata Version 1.6.1-->
+        <springboot.version>2.6.13</springboot.version>
+        <springcloud.version>2021.0.5</springcloud.version>
+        <alibaba.cloud.version>2021.0.5.0</alibaba.cloud.version>
+        <loadbalancer.version>3.1.5</loadbalancer.version>
+        <spring.cloud.starter.openfeign.version>3.1.5</spring.cloud.starter.openfeign.version>
+        <caffeine.version>3.0.5</caffeine.version>
+        <swagger.version>3.0.0</swagger.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <mysql.version>8.0.32</mysql.version>
+        <mybatis.plus.version>3.5.3.1</mybatis.plus.version>
+        <mybatis.plus.join.version>1.4.4.2</mybatis.plus.join.version>
+        <pagehelper.version>1.4.6</pagehelper.version>
+        <druid.spring.service>1.2.16</druid.spring.service>
+        <seata.version>1.6.1</seata.version>
+        <hutool.version>5.8.16</hutool.version>
+        <lang3.version>3.12.0</lang3.version>
+        <kaptcha.version>2.3.2</kaptcha.version>
+        <UserAgentUtils.version>1.21</UserAgentUtils.version>
+        <commons.codec.version>1.8</commons.codec.version>
+        <fastjson2.version>2.0.26</fastjson2.version>
+        <skywalking.version>8.15.0</skywalking.version>
+        <ip2region.version>2.7.0</ip2region.version>
+    </properties>
+
+    <dependencies>
+        <!--日志处理包-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+    <!--发布配置管理-->
+    <!-- <distributionManagement>
+         &lt;!&ndash;release相关的&ndash;&gt;
+         <repository>
+             &lt;!&ndash;私服release仓库&ndash;&gt;
+             <id>coisini-release</id>
+             &lt;!&ndash;去私服页面拷贝下coisini-release仓库地址&ndash;&gt;
+             <url>http://localhost:8090/repository/coisini-release/</url>
+         </repository>
+         &lt;!&ndash;snapshots相关的&ndash;&gt;
+         <snapshotRepository>
+             &lt;!&ndash;私服snapshots仓库&ndash;&gt;
+             <id>coisini-snapshots</id>
+             &lt;!&ndash;去私服页面拷贝下coisini-snapshots仓库地址&ndash;&gt;
+             <url>http://localhost:8090/repository/coisini-snapshots/</url>
+         </snapshotRepository>
+     </distributionManagement>-->
+    <dependencyManagement>
+        <dependencies>
+            <!--内部依赖工程-->
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-admin</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-user</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-common</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-model</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-system</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>service-util</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>common-log</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>common-util</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <!--Springboot版本管理-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <!--<artifactId>spring-boot-dependencies</artifactId>-->
+                <version>${springboot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--spring-cloud版本管理-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${springcloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--spring-cloud-alibaba版本管理-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${alibaba.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <!-- 排除默认的logback日志，使用log4j-->
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-logging</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+                <version>${springboot.version}</version>
+            </dependency>
+            <!-- openFeign负载均衡由ribbon改为loadbalancer-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>${loadbalancer.version}</version>
+            </dependency>
+            <!--引入caffeine依赖-->
+            <!-- 解决项目启动警告：LoadBalancerCacheManager not available, returning delegate without caching.-->
+            <!-- 如果注册中心有自己的缓存，那么就可以禁用loadbalancer的缓存-->
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
+
+            <!--openfeign远程调用-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring.cloud.starter.openfeign.version}</version>
+            </dependency>
+            <!--网关限流-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+                <version>${alibaba.cloud.version}</version>
+            </dependency>
+            <!--swagger 接口文档-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <!--JJWT 加密-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <!--MySQL 8.0.31迁移至 mysql-connector-j-->
+            <!--https://mvnrepository.com/artifact/mysql/mysql-connector-java-->
+            <!--https://mvnrepository.com/artifact/com.mysql/mysql-connector-j-->
+            <dependency>
+                <groupId>com.mysql</groupId>
+                <artifactId>mysql-connector-j</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <!--MyBatis-Plus-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <!-- mybatis-plus-join 连表查询-->
+            <dependency>
+                <groupId>com.github.yulichang</groupId>
+                <artifactId>mybatis-plus-join-boot-starter</artifactId>
+<!--                <artifactId>mybatis-plus-join</artifactId>-->
+                <version>${mybatis.plus.join.version}</version>
+            </dependency>
+            <!--分页插件-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+            <!--数据库连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.spring.service}</version>
+            </dependency>
+            <!--seata,这个捕获全局异常之后，不触发回滚-->
+            <!--<dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-all</artifactId>
+                <version>${seata.version}</version>
+            </dependency>-->
+            <!--工具-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <!--工具-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${lang3.version}</version>
+            </dependency>
+            <!-- Java图形验证码 -->
+            <dependency>
+                <groupId>com.github.penggle</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+            <!--获取浏览器信息-->
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${UserAgentUtils.version}</version>
+            </dependency>
+            <!--运算、编码-->
+            <dependency>
+                <groupId>org.apache.directory.studio</groupId>
+                <artifactId>org.apache.commons.codec</artifactId>
+                <version>${commons.codec.version}</version>
+            </dependency>
+            <!-- fastjson2 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+            <!-- Skywalking 工具类-->
+            <dependency>
+                <groupId>org.apache.skywalking</groupId>
+                <artifactId>apm-toolkit-trace</artifactId>
+                <version>${skywalking.version}</version>
+            </dependency>
+            <!-- ip2region IP获取 -->
+            <dependency>
+                <groupId>org.lionsoul</groupId>
+                <artifactId>ip2region</artifactId>
+                <version>${ip2region.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
