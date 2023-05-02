@@ -16,7 +16,7 @@ import java.util.Date;
  * @Description: 岗位信息
  */
 @TableName("sys_post")
-@ApiModel(value = "SysPostEntity对象", description = "岗位信息")
+@ApiModel(value = "SysPost", description = "岗位信息")
 public class SysPost implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -29,16 +29,24 @@ public class SysPost implements Serializable {
     @ApiModelProperty("岗位编码")
     private String postCode;
 
-    @TableField("name")
+    @TableField("post_name")
     @ApiModelProperty("岗位名称")
-    private String name;
+    private String postName;
 
     @TableField("description")
     @ApiModelProperty("描述")
     private String description;
 
+    @TableField("sort_value")
+    @ApiModelProperty("排序")
+    private String sortValue;
+
+    @TableField("create_by")
+    @ApiModelProperty("创建者")
+    private String createBy;
+
     @TableField("status")
-    @ApiModelProperty("状态（1正常 0停用）")
+    @ApiModelProperty("状态（0正常 1停用）")
     private Boolean status;
 
     @TableField("create_time")
@@ -51,7 +59,7 @@ public class SysPost implements Serializable {
 
     @TableField("del_flag")
     @ApiModelProperty("删除标记（0:可用 1:已删除）")
-    private Integer delFlag;
+    private Boolean delFlag;
 
     public Long getId() {
         return id;
@@ -60,6 +68,7 @@ public class SysPost implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getPostCode() {
         return postCode;
     }
@@ -67,13 +76,15 @@ public class SysPost implements Serializable {
     public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
-    public String getName() {
-        return name;
+
+    public String getPostName() {
+        return postName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPostName(String postName) {
+        this.postName = postName;
     }
+
     public String getDescription() {
         return description;
     }
@@ -81,6 +92,23 @@ public class SysPost implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getSortValue() {
+        return sortValue;
+    }
+
+    public void setSortValue(String sortValue) {
+        this.sortValue = sortValue;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
     public Boolean getStatus() {
         return status;
     }
@@ -88,6 +116,7 @@ public class SysPost implements Serializable {
     public void setStatus(Boolean status) {
         this.status = status;
     }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -95,6 +124,7 @@ public class SysPost implements Serializable {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
     public Date getUpdateTime() {
         return updateTime;
     }
@@ -102,11 +132,12 @@ public class SysPost implements Serializable {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
-    public Integer getDelFlag() {
+
+    public Boolean getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Integer delFlag) {
+    public void setDelFlag(Boolean delFlag) {
         this.delFlag = delFlag;
     }
 
@@ -114,13 +145,15 @@ public class SysPost implements Serializable {
     public String toString() {
         return "SysPost{" +
                 "id=" + id +
-                ", postCode=" + postCode +
-                ", name=" + name +
-                ", description=" + description +
+                ", postCode='" + postCode + '\'' +
+                ", postName='" + postName + '\'' +
+                ", description='" + description + '\'' +
+                ", sortValue='" + sortValue + '\'' +
+                ", createBy='" + createBy + '\'' +
                 ", status=" + status +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", delFlag=" + delFlag +
-                "}";
+                '}';
     }
 }

@@ -58,7 +58,7 @@ public class SysRoleController {
     @PreAuthorize("hasAuthority('role:update')")
     @Log(title = "角色管理",businessType = BusinessType.UPDATE)
     @ApiOperation("修改角色")
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result<SysRole> updateRole(@RequestBody SysRole sysRole){
        return roleService.updateRole(sysRole);
     }

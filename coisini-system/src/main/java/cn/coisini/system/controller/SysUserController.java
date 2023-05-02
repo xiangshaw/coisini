@@ -55,7 +55,7 @@ public class SysUserController {
     @PreAuthorize("hasAuthority('user:update')")
     @Log(title = "用户管理", businessType = BusinessType.UPDATE)
     @ApiOperation("修改用户")
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result<SysUser> update(@RequestBody SysUser sysUser) {
         return userService.updateUser(sysUser);
     }

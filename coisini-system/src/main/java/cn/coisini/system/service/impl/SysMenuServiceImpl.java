@@ -186,7 +186,7 @@ public class SysMenuServiceImpl extends MPJBaseServiceImpl<SysMenuMapper, SysMen
             sysMenuList = baseMapper.selectList(new QueryWrapper<SysMenu>().eq(STATUS, FALSE).orderByAsc("sort_value"));
         } else {
             // 如果不是1，其他类型用户，查询这个用户权限
-            sysMenuList = baseMapper.findMenuListUserId(userId);
+            sysMenuList = findMenuListUserId(userId);
         }
         // 筛选出按钮
         return sysMenuList.stream()
@@ -195,7 +195,7 @@ public class SysMenuServiceImpl extends MPJBaseServiceImpl<SysMenuMapper, SysMen
                 .collect(Collectors.toList());
     }
 
-    // 更新菜单状态(1正常 0禁用)
+    // 更新菜单状态(0正常 1禁用)
     @Override
     public Result<SysMenu> updateStatus(Long id, Boolean status) {
         SysMenu menu = new SysMenu();

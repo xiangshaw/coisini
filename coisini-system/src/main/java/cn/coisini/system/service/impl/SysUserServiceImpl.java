@@ -152,12 +152,12 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         // 2.根据用户id查询
         SysUser user = getById(id);
         // 3.设置状态值
-        user.setStatus(false);
+        user.setStatus(status);
         user.setUpdateTime(new Date());
         //  4.修改并判断结果
         boolean b = updateById(user);
         if (b) {
-            Result.ok(ResultEnum.SUCCESS);
+           return Result.ok(ResultEnum.SUCCESS);
         }
         return Result.error(ResultEnum.FAIL, "用户状态修改失败");
     }

@@ -23,10 +23,6 @@ public class SysDept implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
-    @TableField("name")
-    @ApiModelProperty("部门名称")
-    private String name;
-
     @TableField("parent_id")
     @ApiModelProperty("上级部门id")
     private Long parentId;
@@ -34,6 +30,10 @@ public class SysDept implements Serializable {
     @TableField("tree_path")
     @ApiModelProperty("树结构")
     private String treePath;
+
+    @TableField("dept_name")
+    @ApiModelProperty("部门名称")
+    private String deptName;
 
     @TableField("sort_value")
     @ApiModelProperty("排序")
@@ -47,9 +47,17 @@ public class SysDept implements Serializable {
     @ApiModelProperty("电话")
     private String phone;
 
+    @TableField("email")
+    @ApiModelProperty("邮箱")
+    private String email;
+
     @TableField("status")
     @ApiModelProperty("状态（0正常 1停用 ）")
     private Boolean status;
+
+    @TableField("create_by")
+    @ApiModelProperty("创建者")
+    private String createBy;
 
     @TableField("create_time")
     @JsonFormat(shape = JsonFormat.Shape.STRING , pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Shanghai")
@@ -71,14 +79,6 @@ public class SysDept implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Long getParentId() {
         return parentId;
     }
@@ -93,6 +93,14 @@ public class SysDept implements Serializable {
 
     public void setTreePath(String treePath) {
         this.treePath = treePath;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
     }
 
     public Integer getSortValue() {
@@ -119,12 +127,28 @@ public class SysDept implements Serializable {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public Boolean getStatus() {
         return status;
     }
 
     public void setStatus(Boolean status) {
         this.status = status;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
     }
 
     public Date getCreateTime() {
@@ -155,13 +179,15 @@ public class SysDept implements Serializable {
     public String toString() {
         return "SysDept{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", parentId=" + parentId +
                 ", treePath='" + treePath + '\'' +
+                ", deptName='" + deptName + '\'' +
                 ", sortValue=" + sortValue +
                 ", leader='" + leader + '\'' +
                 ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
                 ", status=" + status +
+                ", createBy=" + createBy +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", delFlag=" + delFlag +
