@@ -1,8 +1,10 @@
 package cn.coisini.system.test;
 
 import cn.coisini.common.utils.IpUtils;
+import cn.coisini.model.system.pojo.SysDept;
 import cn.coisini.model.system.pojo.SysRole;
 import cn.coisini.model.system.pojo.SysUser;
+import cn.coisini.system.mapper.SysDeptMapper;
 import cn.coisini.system.mapper.SysRoleMapper;
 import cn.coisini.system.mapper.SysUserMapper;
 import org.junit.jupiter.api.Test;
@@ -60,5 +62,14 @@ class SysMapperTest {
         System.out.println("省市区："+ cityInfo);
         String hostName = IpUtils.getHostName();
         System.out.println("主机名："+ hostName);
+    }
+
+    // 根据部门id查询部门信息
+    @Autowired
+    private SysDeptMapper sysDeptMapper;
+    @Test
+    void getDept(){
+        SysDept dept = sysDeptMapper.findDeptById(2L);
+        System.out.println(dept);
     }
 }

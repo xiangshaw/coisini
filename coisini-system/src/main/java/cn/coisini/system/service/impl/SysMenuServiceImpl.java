@@ -106,7 +106,7 @@ public class SysMenuServiceImpl extends MPJBaseServiceImpl<SysMenuMapper, SysMen
                 // 拿着分配菜单id 和 所有菜单比对，有相同的，让isSelect值为true（设置该权限已被分配）
                 menuEntity.setSelect(roleMenuId.contains(menuEntity.getId()))
         );
-        // 将权限列表转换为权限树 显示MenuHelper方法实现
+        // 将权限列表转换为权限树
         return buildTree(allMenu);
     }
 
@@ -212,11 +212,11 @@ public class SysMenuServiceImpl extends MPJBaseServiceImpl<SysMenuMapper, SysMen
     /**
      * 构建树型结构
      */
-    private List<SysMenu> buildTree(List<SysMenu> menuEntityList) {
-        return menuEntityList.stream().filter(menu -> menu.getParentId() == 0)
+    private List<SysMenu> buildTree(List<SysMenu> menuList) {
+        return menuList.stream().filter(menu -> menu.getParentId() == 0)
                 .map(menu -> {
                     // 设置子菜单
-                    menu.setChildren(getChildrens(menu, menuEntityList));
+                    menu.setChildren(getChildrens(menu, menuList));
                     return menu;
                 })
                 .collect(Collectors.toList());
@@ -227,10 +227,10 @@ public class SysMenuServiceImpl extends MPJBaseServiceImpl<SysMenuMapper, SysMen
      */
     // 从根节点进行查询子节点
     // 判断id=parentid是否相同，如果相同则是子节点，进行数据封装
-    private List<SysMenu> getChildrens(SysMenu menuEntity, List<SysMenu> menuList) {
+    private List<SysMenu> getChildrens(SysMenu sysMenu, List<SysMenu> menuList) {
         return menuList.stream()
                 // 获取当前菜单id -- 获取所有菜单parentid 进行 比对
-                .filter(menu -> Objects.equals(menu.getParentId(), menuEntity.getId()))
+                .filter(menu -> Objects.equals(menu.getParentId(), sysMenu.getId()))
                 .map(menu -> {
                     menu.setChildren(getChildrens(menu, menuList));
                     return menu;

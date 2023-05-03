@@ -10,6 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: xiaoxiang
@@ -69,7 +70,29 @@ public class SysDept implements Serializable {
 
     @TableField("del_flag")
     @ApiModelProperty("删除标记（0可用 1已删除）")
-    private Integer delFlag;
+    private Boolean delFlag;
+
+    @TableField(exist = false)
+    private List<SysDept> children;
+
+    @TableField(exist = false)
+    private boolean isSelect;
+
+    public List<SysDept> getChildren() {
+        return children;
+    }
+
+    public void setChildren(List<SysDept> children) {
+        this.children = children;
+    }
+
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
+    }
 
     public Long getId() {
         return id;
@@ -167,11 +190,11 @@ public class SysDept implements Serializable {
         this.updateTime = updateTime;
     }
 
-    public Integer getDelFlag() {
+    public Boolean getDelFlag() {
         return delFlag;
     }
 
-    public void setDelFlag(Integer delFlag) {
+    public void setDelFlag(Boolean delFlag) {
         this.delFlag = delFlag;
     }
 

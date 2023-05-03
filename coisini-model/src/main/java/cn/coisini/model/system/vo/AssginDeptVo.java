@@ -14,8 +14,8 @@ import java.util.List;
 @Data
 public class AssginDeptVo {
 
-    @ApiModelProperty(value = "岗位id")
-    private Long postId;
+    @ApiModelProperty(value = "角色id")
+    private Long roleId;
 
     @ApiModelProperty(value = "部门id列表")
     private List<Long> deptIdList;
