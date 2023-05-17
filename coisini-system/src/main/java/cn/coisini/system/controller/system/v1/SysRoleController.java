@@ -1,4 +1,4 @@
-package cn.coisini.system.controller;
+package cn.coisini.system.controller.system.v1;
 
 import cn.coisini.log.annotation.Log;
 import cn.coisini.log.enums.BusinessType;
@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Api(tags = "角色")
 @RestController
-@RequestMapping("/system/role")
+@RequestMapping("/api/v1/role")
 public class SysRoleController {
     private final SysRoleService roleService;
 

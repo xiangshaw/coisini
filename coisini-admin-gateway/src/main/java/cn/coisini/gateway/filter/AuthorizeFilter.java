@@ -23,6 +23,7 @@ import reactor.core.publisher.Mono;
 @Component
 @Log4j2
 public class AuthorizeFilter implements GlobalFilter, Ordered {
+
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         // 1.获取请求对象和响应对象
@@ -30,10 +31,20 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         ServerHttpResponse response = exchange.getResponse();
         log.info("访问地址：" + request.getURI());
         // 2.判断当前的请求是否为登录，如果是，直接放行
-        if (request.getURI().getPath().contains("/login/in")) {/*获取请求的url，包含该路径*/
+        // 如何高效的处理这多个放行请求呢？（待优化）
+        if (request.getURI().getPath().contains("/api/v1/index/login")) {/*获取请求的url，包含该路径*/
             //直接放行，不走后面的代码
             return chain.filter(exchange);
         }
+        if (request.getURI().getPath().contains("/api/v1/index/code")) {/*获取请求的url，包含该路径*/
+            //直接放行，不走后面的代码
+            return chain.filter(exchange);
+        }
+        if (request.getURI().getPath().contains("/api/v1/index/register")) {/*获取请求的url，包含该路径*/
+            //直接放行，不走后面的代码
+            return chain.filter(exchange);
+        }
+
         // 3.获取当前用户的请求头jwt信息
         HttpHeaders headers = request.getHeaders();
         String jwttoken = headers.getFirst("token");/*从请求头中获取jwt*/

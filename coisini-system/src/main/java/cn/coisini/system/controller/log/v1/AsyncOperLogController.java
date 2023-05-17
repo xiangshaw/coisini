@@ -1,4 +1,4 @@
-package cn.coisini.system.controller;
+package cn.coisini.system.controller.log.v1;
 
 import cn.coisini.log.annotation.Log;
 import cn.coisini.log.enums.BusinessType;
@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Api(tags = "操作日志记录")
 @RestController
-@RequestMapping("/system/OperLog")
+@RequestMapping("/api/v1/operLog")
 public class AsyncOperLogController {
     private final AsyncOperLogService asyncOperLogService;
 

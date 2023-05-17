@@ -21,6 +21,8 @@
         <module>service-util</module>
         <!--系统操作日志模块-->
         <module>common-log</module>
+        <!--FastDfs存储-->
+        <module>common-fastdfs</module>
     </modules>
 
     <properties>

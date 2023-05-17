@@ -46,7 +46,7 @@ public class TokenLoginFilter extends UsernamePasswordAuthenticationFilter {
         this.setAuthenticationManager(authenticationManager);
         this.setPostOnly(false);
         //指定登录接口及提交方式，可以指定任意路径
-        this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/system/index/login", "POST"));
+        this.setRequiresAuthenticationRequestMatcher(new AntPathRequestMatcher("/api/v1/index/login", "POST"));
         this.stringRedisTemplate = stringRedisTemplate;
         this.asyncLoginLogService = asyncLoginLogService;
     }

@@ -26,6 +26,7 @@ spring:
               - POST
               - PUT
               - DELETE
+
       discovery:
         locator:
           enabled: false # 是否启动自动识别nacos服务，开启的话，下面路由就不用写了，会自动断言服务名（IP/服务名/路径），但不太推荐使用，阅读性也差
@@ -58,5 +59,12 @@ spring:
           uri: lb://user
           predicates:
             - Path=/user/**
+          filters:
+            - StripPrefix= 1
+        # system微服务管理
+        - id: system
+          uri: lb://system
+          predicates:
+            - Path=/system/**
           filters:
             - StripPrefix= 1

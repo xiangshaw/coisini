@@ -1,4 +1,4 @@
-package cn.coisini.system.controller;
+package cn.coisini.system.controller.system.v1;
 
 import cn.coisini.log.annotation.Log;
 import cn.coisini.log.enums.BusinessType;
@@ -21,7 +21,7 @@ import java.util.Map;
  */
 @Api(tags = "用户管理接口")
 @RestController
-@RequestMapping("/system/user")
+@RequestMapping("/api/v1/user")
 public class SysUserController {
 
     private final SysUserService userService;

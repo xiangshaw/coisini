@@ -1,4 +1,4 @@
-package cn.coisini.system.controller;
+package cn.coisini.system.controller.log.v1;
 
 import cn.coisini.log.annotation.Log;
 import cn.coisini.log.enums.BusinessType;
@@ -10,7 +10,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,10 +17,14 @@ import java.util.List;
  * @Description: 系统访问记录 前端控制器
  */
 @RestController
-@RequestMapping("/system/loginLog")
+@RequestMapping("/api/v1/loginLog")
 public class AsyncLoginLogController {
-    @Resource
-    private AsyncLoginLogService asyncLoginLogService;
+
+    private final AsyncLoginLogService asyncLoginLogService;
+
+    public AsyncLoginLogController(AsyncLoginLogService asyncLoginLogService) {
+        this.asyncLoginLogService = asyncLoginLogService;
+    }
 
     @ApiOperation("条件分页查询登录日志")
     @PreAuthorize("hasAuthority('loginLog.list')")

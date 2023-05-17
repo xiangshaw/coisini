@@ -1,4 +1,4 @@
-package cn.coisini.system.controller;
+package cn.coisini.system.controller.system.v1;
 
 import cn.coisini.log.annotation.Log;
 import cn.coisini.log.enums.BusinessType;
@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Api(tags = "部门管理接口")
 @RestController
-@RequestMapping("/system/dept")
+@RequestMapping("/api/v1/dept")
 public class SysDeptController {
     private final SysDeptService deptService;
 

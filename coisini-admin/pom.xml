@@ -31,5 +31,9 @@
             <groupId>cn.coisini</groupId>
             <artifactId>service-util</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.coisini</groupId>
+            <artifactId>common-log</artifactId>
+        </dependency>
     </dependencies>
 </project>

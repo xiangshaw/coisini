@@ -10,7 +10,7 @@ mybatis-plus:
     map-underscore-to-camel-case: false # 数据库下划线自动转驼峰标示关闭(为true，就简单粗暴的把下划线干掉了)
   mapper-locations: classpath*:mapper/*.xml # 读取mapper包下映射
   # 设置别名包扫描路径，通过该属性可以给包中的类注册别名
-  type-aliases-package: cn.coisini.model.admin.pojo
+  type-aliases-package: cn.coisini.model.**.pojo
 # 分布式ID
 # 机器ID
 workId: 0

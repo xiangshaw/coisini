@@ -1,4 +1,4 @@
-package cn.coisini.system.controller;
+package cn.coisini.system.controller.system.v1;
 
 import cn.coisini.log.annotation.Log;
 import cn.coisini.log.enums.BusinessType;
@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Api(tags = "岗位管理接口")
 @RestController
-@RequestMapping("/system/post")
+@RequestMapping("/api/v1/post")
 public class SysPostController {
     private final SysPostService sysPostService;
 

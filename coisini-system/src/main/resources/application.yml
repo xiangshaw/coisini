@@ -1,5 +1,9 @@
 server:
   port: 9422
+feign:
+  sentinel:
+    # openfeign 整合 sentinel
+    enabled: true
 spring:
   application:
     name: system
@@ -27,6 +31,28 @@ spring:
         ephemeral: true
         # 权重 1-100 数值越大权重越大分配的流量就越大，通常结合权重负载均衡策略
         weight: 100
+    sentinel:
+      eager: true  #是否开启网关限流，默认true
+      transport:
+        # 添加sentinel的控制台地址
+        dashboard: 127.0.0.1:9100
+        #指定应用与Sentinel控制台交互的端口，应用本地会起一个该端口占用的HttpServer
+        port: 8719
+      web-context-unify: false # 默认将调用链路收敛，导致链路流控效果无效
+      # 持久化配置
+      datasource:
+        admin-flow-rule: # 唯一名称可自定义
+          nacos:
+            # 设置Nacos的连接地址、命名空间和Group ID
+            server-addr: ${spring.cloud.nacos.discovery.server-addr}
+            username: ${spring.cloud.nacos.discovery.username}
+            password: ${spring.cloud.nacos.discovery.password}
+            # 设置Nacos中配置文件的命名规则
+            dataId: ${spring.application.name}-flow-rules
+            groupId: SENTINEL_GROUP
+            dataType: json
+            # 必填的重要字段，指定当前规则类型是"限流"
+            rule-type: flow
   redis:
     host: 192.168.20.128
     port: 6379

@@ -1,4 +1,4 @@
-package cn.coisini.system.controller;
+package cn.coisini.system.controller.system.v1;
 
 import cn.coisini.common.exception.CoisiniException;
 import cn.coisini.common.utils.JwtUtil;
@@ -35,7 +35,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Api(tags = "用户登录")
 @RestController
-@RequestMapping("/system/index")
+@RequestMapping("/api/v1/index")
 @Log4j2
 public class SysLoginController {
     private final SysUserService sysUserService;
@@ -77,7 +77,6 @@ public class SysLoginController {
         map.put("uuid",uuid);
         return Result.ok(map);
     }
-
     @ApiOperation("退出登录")
     @PostMapping("/logout")
     public Result<ResultEnum> logout(){
