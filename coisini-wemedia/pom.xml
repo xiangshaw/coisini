@@ -5,11 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.coisini</groupId>
-        <artifactId>coisini-common</artifactId>
+        <artifactId>coisini</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>common-fastdfs</artifactId>
+    <artifactId>coisini-wemedia</artifactId>
+    <packaging>jar</packaging>
+    <name>wemedia</name>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -18,14 +20,15 @@
     </properties>
 
     <dependencies>
-        <!--fastdfs 存储-->
-        <dependency>
-            <groupId>com.github.tobato</groupId>
-            <artifactId>fastdfs-client</artifactId>
-        </dependency>
+        <!--Spring Boot 场景启动-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--FastDfs 存储-->
+        <dependency>
+            <groupId>com.github.tobato</groupId>
+            <artifactId>fastdfs-client</artifactId>
         </dependency>
     </dependencies>
 

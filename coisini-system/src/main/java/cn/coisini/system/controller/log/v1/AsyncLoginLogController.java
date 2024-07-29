@@ -7,6 +7,9 @@ import cn.coisini.model.common.dto.Result;
 import cn.coisini.model.system.pojo.AsyncLoginLog;
 import cn.coisini.model.system.vo.AsyncLoginLogQueryVo;
 import io.swagger.annotations.ApiOperation;
+import org.apache.skywalking.apm.toolkit.trace.Tag;
+import org.apache.skywalking.apm.toolkit.trace.Tags;
+import org.apache.skywalking.apm.toolkit.trace.Trace;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +29,9 @@ public class AsyncLoginLogController {
         this.asyncLoginLogService = asyncLoginLogService;
     }
 
+    // SkyWalking 自定义链路追踪
+    @Trace
+    @Tags({@Tag(key = "param", value = "arg[0]")})
     @ApiOperation("条件分页查询登录日志")
     @PreAuthorize("hasAuthority('loginLog.list')")
     @GetMapping("/list")

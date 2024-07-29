@@ -31,6 +31,8 @@
         <module>coisini-admin-gateway</module>
         <!--权限管理-->
         <module>coisini-system</module>
+        <!--自媒体端-->
+        <module>coisini-wemedia</module>
 
     </modules>
 
@@ -69,6 +71,7 @@
         <skywalking.version>8.15.0</skywalking.version>
         <ip2region.version>2.7.0</ip2region.version>
         <fastdfs.version>1.27.2</fastdfs.version>
+        <skywalking.version>8.15.0</skywalking.version>
     </properties>
 
     <dependencies>
@@ -97,48 +100,6 @@
      </distributionManagement>-->
     <dependencyManagement>
         <dependencies>
-            <!--内部依赖工程-->
-            <dependency>
-                <groupId>cn.coisini</groupId>
-                <artifactId>coisini-admin</artifactId>
-                <version>${coisini.cn.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.coisini</groupId>
-                <artifactId>coisini-user</artifactId>
-                <version>${coisini.cn.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.coisini</groupId>
-                <artifactId>coisini-common</artifactId>
-                <version>${coisini.cn.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.coisini</groupId>
-                <artifactId>coisini-model</artifactId>
-                <version>${coisini.cn.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.coisini</groupId>
-                <artifactId>coisini-system</artifactId>
-                <version>${coisini.cn.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.coisini</groupId>
-                <artifactId>service-util</artifactId>
-                <version>${coisini.cn.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.coisini</groupId>
-                <artifactId>common-log</artifactId>
-                <version>${coisini.cn.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.coisini</groupId>
-                <artifactId>common-util</artifactId>
-                <version>${coisini.cn.version}</version>
-            </dependency>
-
             <!--Springboot版本管理 <artifactId>spring-boot-dependencies</artifactId>-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -314,6 +275,52 @@
                 <groupId>com.github.tobato</groupId>
                 <artifactId>fastdfs-client</artifactId>
                 <version>${fastdfs.version}</version>
+            </dependency>
+            <!--内部依赖工程-->
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-admin</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-user</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-common</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-model</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-system</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>service-util</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>common-log</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>common-util</artifactId>
+                <version>${coisini.cn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.coisini</groupId>
+                <artifactId>coisini-wemedia</artifactId>
+                <version>${coisini.cn.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

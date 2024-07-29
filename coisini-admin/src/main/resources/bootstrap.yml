@@ -181,6 +181,9 @@ seata:
       group: SEATA_GROUP
       cluster: default
 
+# 拼接 FastDfs 地址
+fdfs.url: http://192.168.20.128/
+
 
 
 

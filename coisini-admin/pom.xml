@@ -21,6 +21,11 @@
 
     <dependencies>
         <!--依赖模块-->
+        <!--Spring Boot 场景启动-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!--实体类-->
         <dependency>
             <groupId>cn.coisini</groupId>
@@ -30,6 +35,12 @@
         <dependency>
             <groupId>cn.coisini</groupId>
             <artifactId>service-util</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-security</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>cn.coisini</groupId>

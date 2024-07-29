@@ -1,0 +1,12 @@
+server:
+  port: 9422
+spring:
+  application:
+    name: coisini-wemedia
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+#图片访问ip
+fdfs.url: http://192.168.20.128/

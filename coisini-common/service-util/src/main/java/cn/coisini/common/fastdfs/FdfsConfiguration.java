@@ -1,4 +1,4 @@
-package cn.coisini.fastdfs;
+package cn.coisini.common.fastdfs;
 
 import com.github.tobato.fastdfs.FdfsClientConfig;
 import org.springframework.context.annotation.Configuration;
